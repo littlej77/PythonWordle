@@ -35,11 +35,24 @@ def wordle():
             #create string of guess letters
             tempWord = tempWord + gw.get_square_letter(currentRow,x)
         #check if guess is in list
-        if tempWord.lower() in FIVE_LETTER_WORDS:
+         if tempWord.upper() == word.upper():
+            if currentRow == 1:
+                gw.show_message("Wow! You got lucky")
+            elif currentRow == 2:
+                gw.show_message("Impressive!")
+            elif currentRow == 3:
+                gw.show_message("Great job!")
+            elif currentRow == 4:
+                gw.show_message("Nice job!")
+            elif currentRow == 5:
+                gw.show_message("That was close...")
+        
+        elif tempWord.lower() in FIVE_LETTER_WORDS:
             gw.show_message("Good guess, try again")
             currentRow += 1
             gw.set_current_row(currentRow)
             tempWord= ""
+
         else:
             gw.show_message("Not in word list")
             gw.set_current_row(currentRow)
